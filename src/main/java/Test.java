@@ -23,8 +23,10 @@ public class Test {
             PageHelper.startPage(1, 4);
             List<Role> roleList = roleMapper.f();
             PageInfo<Role> pageInfo = new PageInfo<>(roleList);
+
+            List<Role> roleList1 = roleMapper.f();
             System.out.println("**********************roleList:");
-            for (Role r: roleList
+            for (Role r: roleList1
                     ) {
                 System.out.println(r);
             }
