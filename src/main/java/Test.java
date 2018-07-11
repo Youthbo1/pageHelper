@@ -7,6 +7,8 @@ import utils.SqlSessionFactoryUtils;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class Test {
     public static void main(String[] args) {
         testPageHelper();
@@ -25,7 +27,22 @@ public class Test {
             PageInfo<Role> pageInfo = new PageInfo<>(roleList);
 
             List<Role> roleList1 = roleMapper.f();
-            System.out.println("**********************roleList:");
+            PageInfo page = new PageInfo(roleList);
+//测试PageInfo全部属性
+//PageInfo包含了非常全面的分页属性
+            assertEquals(1, page.getPageNum());
+            assertEquals(4, page.getPageSize());
+            assertEquals(1, page.getStartRow());
+            assertEquals(10, page.getEndRow());
+            assertEquals(183, page.getTotal());
+            assertEquals(19, page.getPages());
+            assertEquals(1, page.getFirstPage());
+            assertEquals(8, page.getLastPage());
+//            assertEquals(true, page.isFirstPage());
+//            assertEquals(false, page.isLastPage());
+            assertEquals(false, page.isHasPreviousPage());
+            assertEquals(true, page.isHasNextPage());
+            System.out.println("**********************roleList1:");
             for (Role r: roleList1
                     ) {
                 System.out.println(r);
